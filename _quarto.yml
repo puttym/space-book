@@ -1,0 +1,39 @@
+project:
+  type: book 
+  output-dir: docs
+
+book:
+  title: "An Introduction to Space Systems"
+  author: "Madhukara Putty"
+  page-navigation: true
+  search: true
+  sidebar:
+    style: docked
+    background: light
+  repo-url: https://github.com/mputty/space-book
+  repo-actions: [edit]
+  downloads: [pdf, epub]
+  sharing: [twitter]
+  chapters:
+    - index.qmd
+    - part: "Orbital Mechanics"
+      chapters:
+        - GEC.qmd
+        - orbital_elements.qmd
+    - part: "Satellite Subsystems"
+      chapters:
+         - ADCS.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 2
+    toc-location: left
+    number-depth: 2
+    number-sections: true
+  pdf:
+    documentclass: scrreprt
+    number-depth: 2
+    toc: true
+    toc-depth: 2

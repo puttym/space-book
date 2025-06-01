@@ -1,0 +1,109 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "An Introduction to Space Systems",
+    "section": "",
+    "text": "1 Introduction\nWelcome to An Introduction to Space Systems. This book is a personal journey through the principles, mathematics, and technologies behind satellite missions.\nYou may start reading from any chapter, but we recommend beginning with Orbital Mechanics. If you want to learn about ADCS, then we recommend ADCS\nSee Equation Equation 1.1 and Section Section 1.1 for examples of references.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#sec-structure",
+    "href": "index.html#sec-structure",
+    "title": "An Introduction to Space Systems",
+    "section": "1.1 The Structure of This Book",
+    "text": "1.1 The Structure of This Book\nThis book is divided into two parts:\n\nOrbital Mechanics: Basics of orbits, coordinate systems, and orbital elements.\nSatellite Subsystems: ADCS, power, communication, and more.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#a-demo-equation",
+    "href": "index.html#a-demo-equation",
+    "title": "An Introduction to Space Systems",
+    "section": "1.2 A Demo Equation",
+    "text": "1.2 A Demo Equation\nA simple math example for reference:\n\\[\nE = mc^2\n\\tag{1.1}\\]",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome</span>"
+    ]
+  },
+  {
+    "objectID": "GEC.html",
+    "href": "GEC.html",
+    "title": "2  Geocentric Coordinate Systems",
+    "section": "",
+    "text": "3 Overview\nGeocentric coordinate systems are centered at the Earth’s center. This chapter introduces the geocentric equatorial frame and related systems.\nSee also the orbital elements in Section ?sec-orb-elements.",
+    "crumbs": [
+      "Orbital Mechanics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Geocentric Coordinate Systems</span>"
+    ]
+  },
+  {
+    "objectID": "GEC.html#coordinate-frames",
+    "href": "GEC.html#coordinate-frames",
+    "title": "2  Geocentric Coordinate Systems",
+    "section": "3.1 Coordinate Frames",
+    "text": "3.1 Coordinate Frames\nWe define a right-handed coordinate system with:\n\nX-axis pointing toward the vernal equinox\nZ-axis along the Earth’s rotation axis",
+    "crumbs": [
+      "Orbital Mechanics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Geocentric Coordinate Systems</span>"
+    ]
+  },
+  {
+    "objectID": "GEC.html#example-equation",
+    "href": "GEC.html#example-equation",
+    "title": "2  Geocentric Coordinate Systems",
+    "section": "3.2 Example Equation",
+    "text": "3.2 Example Equation\nThe position vector \\(\\vec{r}\\) can be expressed as:\n\\[\n\\vec{r} = x \\hat{i} + y \\hat{j} + z \\hat{k}\n\\tag{3.1}\\]",
+    "crumbs": [
+      "Orbital Mechanics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Geocentric Coordinate Systems</span>"
+    ]
+  },
+  {
+    "objectID": "orbital_elements.html",
+    "href": "orbital_elements.html",
+    "title": "3  Orbital Elements",
+    "section": "",
+    "text": "3.1 Equation Example\n# Introduction {#sec:orb-elements}\nOrbital elements define the shape and orientation of a satellite’s orbit.\nThe six classical elements are:\nThe equation for orbital period:\n\\[\nT = 2\\pi \\sqrt{\\frac{a^3}{\\mu}}\n\\tag{3.1}\\]\nwhere \\(\\mu\\) is the standard gravitational parameter.\nRefer to Equation Equation 3.1 for orbital period.",
+    "crumbs": [
+      "Orbital Mechanics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Orbital Elements</span>"
+    ]
+  },
+  {
+    "objectID": "orbital_elements.html#equation-example",
+    "href": "orbital_elements.html#equation-example",
+    "title": "3  Orbital Elements",
+    "section": "4.1 Equation Example",
+    "text": "4.1 Equation Example\nThe equation for orbital period:\n\\[\nT = 2\\pi \\sqrt{\\frac{a^3}{\\mu}}\n\\tag{4.1}\\]\nwhere \\(\\mu\\) is the standard gravitational parameter.\nRefer to Equation Equation 4.1 for orbital period.",
+    "crumbs": [
+      "Orbital Mechanics",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Orbital Elements</span>"
+    ]
+  },
+  {
+    "objectID": "ADCS.html",
+    "href": "ADCS.html",
+    "title": "4  Attitude Determination and Control",
+    "section": "",
+    "text": "5 Introduction\nThe ADCS subsystem is responsible for controlling a satellite’s orientation.\nWe build on the orbital reference frames defined in Geocentric Coordinate Systems.",
+    "crumbs": [
+      "Satellite Subsystems",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Attitude Determination and Control</span>"
+    ]
+  },
+  {
+    "objectID": "ADCS.html#euler-angles",
+    "href": "ADCS.html#euler-angles",
+    "title": "4  Attitude Determination and Control",
+    "section": "5.1 Euler Angles",
+    "text": "5.1 Euler Angles\nAttitude can be described using Euler angles \\((\\phi, \\theta, \\psi)\\).\nThe transformation matrix is:\n\\[\nR =\n\\begin{bmatrix}\nc_\\psi c_\\theta & c_\\psi s_\\theta s_\\phi - s_\\psi c_\\phi & c_\\psi s_\\theta c_\\phi + s_\\psi s_\\phi \\\\\ns_\\psi c_\\theta & s_\\psi s_\\theta s_\\phi + c_\\psi c_\\phi & s_\\psi s_\\theta c_\\phi - c_\\psi s_\\phi \\\\\n-s_\\theta & c_\\theta s_\\phi & c_\\theta c_\\phi\n\\end{bmatrix}\n\\tag{5.1}\\]\nwhere \\(c\\) and \\(s\\) denote cosine and sine functions respectively.\nRefer to Equation Equation 5.1 for attitude rotation.\nRefer to Equation 4.1 for orbital period.",
+    "crumbs": [
+      "Satellite Subsystems",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Attitude Determination and Control</span>"
+    ]
+  }
+]

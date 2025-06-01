@@ -1,0 +1,28 @@
+---
+title: "Orbital Elements"
+---
+
+\ # Introduction {#sec:orb-elements}
+
+Orbital elements define the shape and orientation of a satellite's orbit.
+
+The six classical elements are:
+
+1. Semi-major axis ($a$)
+2. Eccentricity ($e$)
+3. Inclination ($i$)
+4. Right ascension of ascending node (RAAN)
+5. Argument of perigee ($\omega$)
+6. True anomaly ($\nu$)
+
+## Equation Example
+
+The equation for orbital period:
+
+$$
+T = 2\pi \sqrt{\frac{a^3}{\mu}}
+$$ {#eq-orbital-period}
+
+where $\mu$ is the standard gravitational parameter.
+
+Refer to Equation @eq-orbital-period for orbital period.

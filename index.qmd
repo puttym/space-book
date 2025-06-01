@@ -1,0 +1,26 @@
+---
+title: "Welcome"
+---
+# Introduction
+
+Welcome to *An Introduction to Space Systems*. This book is a personal journey through the principles, mathematics, and technologies behind satellite missions.
+
+You may start reading from any chapter, but we recommend beginning with [Orbital Mechanics](GEC.qmd). If you want to learn about ADCS, then we recommend [ADCS](ADCS.qmd)
+
+See Equation @eq-demo-eq and Section @sec-structure for examples of references.
+
+## The Structure of This Book {#sec-structure}
+
+This book is divided into two parts:
+
+- **Orbital Mechanics**: Basics of orbits, coordinate systems, and orbital elements.
+- **Satellite Subsystems**: ADCS, power, communication, and more.
+
+## A Demo Equation
+
+A simple math example for reference:
+
+$$
+E = mc^2
+$$ {#eq-demo-eq}
+

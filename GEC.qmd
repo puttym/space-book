@@ -1,0 +1,24 @@
+---
+title: "Geocentric Coordinate Systems"
+---
+
+# Overview
+
+Geocentric coordinate systems are centered at the Earth's center. This chapter introduces the geocentric equatorial frame and related systems.
+
+See also the orbital elements in Section @sec-orb-elements.
+
+## Coordinate Frames
+
+We define a right-handed coordinate system with:
+
+- X-axis pointing toward the vernal equinox
+- Z-axis along the Earth's rotation axis
+
+## Example Equation
+
+The position vector $\vec{r}$ can be expressed as:
+
+$$
+\vec{r} = x \hat{i} + y \hat{j} + z \hat{k}
+$$ {#eq-position-vector}
