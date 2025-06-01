@@ -10,7 +10,7 @@ book:
   sidebar:
     style: docked
     background: light
-  repo-url: https://github.com/mputty/space-book
+  repo-url: https://github.com/puttym/space-book
   repo-actions: [edit]
   downloads: [pdf, epub]
   sharing: [twitter]
