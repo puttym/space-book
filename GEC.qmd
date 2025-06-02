@@ -1,24 +1,211 @@
----
-title: "Geocentric Coordinate Systems"
----
+# Geocentric equatorial frame
 
-# Overview
+The Geocentric Equatorial Frame (GEF) is an Earth-centered, inertial coordinate
+system widely used in orbital mechanics. Its origin is at the Earth's center,
+the Z-axis points toward the North Pole (aligned with Earth’s rotation axis),
+and the X-axis points toward the vernal equinox — a fixed direction in space
+where Earth’s equatorial plane intersects its orbital plane.
 
-Geocentric coordinate systems are centered at the Earth's center. This chapter introduces the geocentric equatorial frame and related systems.
+Earth’s orbit lies in one plane, and its rotation occurs around a tilted axis.
+As a result, the equatorial and orbital planes are not the same. They intersect
+along a line, and the Sun appears to cross this line twice a year, marking the
+vernal equinox (around March 21) and the autumnal equinox (around September 23).
+The vernal equinox is historically significant and relatively stable, making it
+an ideal reference direction.
 
-See also the orbital elements in Section @sec-orb-elements.
+In this frame, the position of an object in the sky is often expressed using two
+angular coordinates:
 
-## Coordinate Frames
+**Right Ascension (RA)**, denoted by $\alpha$, is the angle measured eastward
+*from the vernal equinox along the equatorial plane — analogous to longitude.
 
-We define a right-handed coordinate system with:
+**Declination (Dec)**, denoted by $\delta$, is the angle between the object’s
+*position vector and the equatorial plane — analogous to latitude.
 
-- X-axis pointing toward the vernal equinox
-- Z-axis along the Earth's rotation axis
+These angular coordinates give a more intuitive sense of location on the
+celestial sphere. They are especially useful for visualization, telescope
+alignment, and interpreting outputs from star trackers or tracking systems.
 
-## Example Equation
+## Converting from Cartesian Coordinates to RA and Dec
 
-The position vector $\vec{r}$ can be expressed as:
+Satellite operators calculate the position vector of a satellite via what are
+called the 'ranging measurements'. The position vector tells us how far the
+satellite is and in what direction, but angular quantities like RA and Dec
+provide a more intuitive picture of where the satellite is located on the
+celestial sphere, and are often used in conjunction with visual tracking or sky
+maps. Let’s now look at how to convert $(x, y, z)$ coordinates into RA and Dec.
+
+![Right ascension and declination of the point $P(x, y, z)$](assets/a2.png){#fig-coordinate-systems width="50%"}
+
+Suppose a satellite’s position is given in Cartesian form, $\vec{\rho} = (x, y,
+z)$, expressed in the GEF (@fig-coordinate-systems). To compute its RA and Dec, we begin by constructing
+the unit vector in the direction of the position vector:
+
+\begin{equation} \hat{\mathbf{u}}_{\rho} = \frac{\vec{\rho}}{||\vec{\rho}||} = l
+\hat{\mathbf{I}}+m \hat{\mathbf{J}}+n \hat{\mathbf{K}} \end{equation}
+
+where $l$, $m$, and $n$ are the direction cosines and $\hat{\mathbf{I}}$,
+$\hat{\mathbf{J}}$, and $\hat{\mathbf{K}}$ are the unit vectors in $X$, $Y$, and
+$Z$ directions respectively.
+
+From the figure, we can write,
+$$
+\begin{align}
+l &= \frac{x}{\rho} = \frac{r \cos \alpha}{\rho}  = \frac{\rho \cos \delta \cos \alpha}{\rho} = \cos \delta \cos \alpha\nonumber \\
+m &= \frac{y}{\rho} = \frac{r \sin \alpha}{\rho} = \frac{\rho \cos \delta \sin \alpha}{\rho} = \cos \delta \sin \alpha \\
+n &= \frac{z}{\rho} = \sin \delta \nonumber
+\end{align}
+$$ {#eq-dir-cos}
+
+### Find $\delta$
+Declination $\delta$ varies between $-90^\circ$ and $+90^\circ$. Since $\sin \delta$ has a unique value unique value for $\delta$ in this range, there is no quadrant ambibuity. Therefore, 
 
 $$
-\vec{r} = x \hat{i} + y \hat{j} + z \hat{k}
-$$ {#eq-position-vector}
+\begin{equation}
+\boxed{\delta = \arcsin \left(\frac{z}{\rho} \right)}
+\end{equation}
+$$ {#eq-dec}
+
+### Find $\alpha$
+Consider, 
+
+$$
+\begin{equation}
+l = \cos \delta \cos \alpha
+\end{equation} 
+$$ {#eq-l}
+
+Substituting for $\delta$ from @eq-dec in @eq-l, and rearranging terms, we get,
+
+$$
+\begin{equation}
+\alpha = \arccos \left(\frac{l}{\cos \delta}\right)
+\end{equation}
+$$
+
+Since $\alpha$ varies between $0^\circ$ and $360^\circ$, the above equation 
+can have two solutions. To identify the correct value of $\alpha$, we use the 
+expression for $m$ from @eq-dir-cos:
+
+$$
+\begin{equation}
+    m = \cos \delta \sin \alpha
+\end{equation}
+$$ {#eq-m}
+
+In @eq-m, $\delta$ varies between $-90^\circ$ and $+90^\circ$, and hence 
+$\cos \delta$ is always positive. That means, if $m$ is positive, then 
+$\sin \alpha$ should be positive, and consequently, $\alpha$ must lie in 
+the I or II quadrant, ie $0^\circ \leq \alpha \leq 180^\circ$.
+
+If $m$ is negative, then $\sin \alpha$ should be negative and therefore $\alpha$ 
+must be in quadrant III or IV, ie $0^\circ \leq \alpha \leq 360^\circ$.
+
+If $m =0$, then $\vec{\rho}$ lies in the plane perpendicular to the $y-$ axis. 
+In this case, $\alpha = 0^\circ$, $180^\circ$, or $360^\circ$, depending on the 
+value of $\delta$. Specifically, $\alpha = 0^\circ$, if $\vec{\rho}$ lies in 
+the planes defined by $+X$ and $\pm Z$ axes, and $180^{\circ}$ if it lies in the
+planes defined by $-X$ and $\pm Z$ axes. We ignore $\alpha = 360^{\circ}$ as it
+is the same as $\alpha = 0^{\circ}$. Note that $l > 0$ in planes
+defined by the $+X$ and $\pm Z$ axes, and $l < 0$, in planes defined by the $-X$
+and $\pm Z$ axes. With this, we can write,
+
+$$
+\begin{equation}
+    \boxed{\alpha=\left\{\begin{array}{ll}
+\cos ^{-1}\left(\frac{l}{\cos \delta}\right) & (m>0) \\
+360^{\circ}-\cos ^{-1}\left(\frac{l}{\cos \delta}\right) & (m < 0) \\
+0^{\circ} & (m = 0\, \text{and}\, l > 0) \\
+180^{\circ} & (m = 0\, \text{and}\, l < 0)
+\end{array}\right.}
+\end{equation}
+$$ {#eq-RA}
+
+If we know the $(x, y, z)$ coordinates of a satellite, then we can use @eq-dec and 
+@eq-RA to obtain the corresponding declination and right ascension in the 
+geocentric equatorial frame. These angular coordinates provide a more intuitive 
+way of locating the satellite in space.
+
+## Python code
+
+Given below is a Python program that computes RA and Dec from the cartesian
+coodinates of the position of a satellite. Note that the program takes command
+line arguments ie you need to provide the value of $x$, $y$, and $z$ coordinates
+at the command line itself. 
+
+For example, if the program is saved in file 
+```cart_to_gef.py``` and the position of the satellite is given by 
+$-5368 \mathbf{\hat{I}} - 1784 \mathbf{\hat{J}} + 3691 \mathbf{\hat{K}} \, (\mathrm{km})$
+then, you run the program by executing the following command in the terminal:
+
+```python cart_to_gef.py -5368 -1784 3691``` 
+
+Note that the numbers after the file name are the $x$, $y$ and $z$ coordinates of 
+the position vector of the satellite.
+
+```
+import numpy as np
+
+def direction_cosines(x, y, z):
+    r = np.array([x, y, z])
+    r_mag = np.linalg.norm(r)
+    l = x/r_mag
+    m = y/r_mag
+    n = z/r_mag
+    return l, m, n
+
+#Declination (in degree)
+def declination(n):
+    Dec = np.degrees(np.arcsin(n))
+    return Dec
+
+#Right ascension (in degree)
+def right_ascension(l, m, Dec):
+    if m > 0:
+        RA = np.degrees(np.arccos(l/np.cos(np.radians(Dec))))
+    if m < 0:
+        RA = 360 - np.degrees(np.arccos(l/np.cos(np.radians(Dec))))
+    if m == 0:
+        if l > 0:
+            RA = 0
+        if l < 0:
+            RA = 180
+    return RA    
+    
+def main():
+    #Get inputs from the command line
+    from argparse import ArgumentParser
+    a = ArgumentParser()
+    a.add_argument("x", type=float)
+    a.add_argument("y", type=float)
+    a.add_argument("z", type=float)
+    arguments = a.parse_args()
+    
+    #Calculate Dec and RA
+    r = np.array([arguments.x, arguments.y, arguments.z])
+    l, m, n = direction_cosines(x=r[0], y=r[1], z=r[2])
+    Dec = declination(n)
+    RA = right_ascension(l, m, Dec)
+    
+    #Print output
+    print("===============================")
+    print("Position coordinates (given): x = {0} km, y = {1} km, z = {2} km".format(r[0], r[1], r[2]))
+    print("Direction cosines: l = {0:.4}, m = {1:.4}, n = {2:.4}".format(l, m, n))
+    print("Dec = {0:5.2f} deg".format(Dec))
+    print("RA = {0:5.2f} deg".format(RA))
+    print("================================")
+    
+if __name__ == "__main__":
+    main()
+```
+
+## Conclusion
+Understanding the transformation from Cartesian coordinates to right ascension
+and declination is a foundational step in satellite tracking and space mission
+analysis. It bridges the mathematical representation of position with how we
+actually observe objects in the sky. Whether you're working with raw simulation
+data or planning real-world observations, this conversion is key to aligning
+engineering models with celestial geometry. As you delve deeper into orbital
+mechanics, you’ll see RA and Dec crop up in everything from star tracker outputs
+to ground station pointing algorithms. Mastering this transformation builds both
+clarity and confidence in your space systems work.
