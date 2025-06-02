@@ -1,26 +1,24 @@
 ---
-title: "Welcome"
+title: "Why I'm Writing This Book"
 ---
-# Introduction
+# Why I'm Writing This Book {.unnumbered}
 
-Welcome to *An Introduction to Space Systems*. This book is a personal journey through the principles, mathematics, and technologies behind satellite missions.
+A few years ago, I used to work in the space industry. Then, like it does for
+many of us, life took its own course. I stepped away from that world — not
+entirely by choice — and found myself on a very different path. But the pull of
+space never really went away.
 
-You may start reading from any chapter, but we recommend beginning with [Orbital Mechanics](GEC.qmd). If you want to learn about ADCS, then we recommend [ADCS](ADCS.qmd)
+This book is part of my return mission.
 
-See Equation @eq-demo-eq and Section @sec-structure for examples of references.
+I’ve been revisiting foundational texts in orbital mechanics, space systems, and
+mission design — and as I read, I write. Each chapter in this book started as a
+self-study article: my attempt to understand something clearly and explain it
+carefully. The goal is to make these topics accessible without losing technical
+precision.
 
-## The Structure of This Book {#sec-structure}
+I’m sharing my work in public — mostly through LinkedIn — and using that
+momentum to reconnect with people in the field. It’s not always comfortable to
+learn in public, but at this stage, there’s no other way. If anything, it keeps
+me honest and consistent.
 
-This book is divided into two parts:
-
-- **Orbital Mechanics**: Basics of orbits, coordinate systems, and orbital elements.
-- **Satellite Subsystems**: ADCS, power, communication, and more.
-
-## A Demo Equation
-
-A simple math example for reference:
-
-$$
-E = mc^2
-$$ {#eq-demo-eq}
-
+The mission is already underway.
