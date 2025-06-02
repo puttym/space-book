@@ -1,30 +1,116 @@
 ---
-title: "Attitude Determination and Control"
+title: "Why Spacecraft Need Attitude Determination and Control Subsystem (ADCS)"
 ---
+# Introduction {.unnumbered}
+The Attitude Determination and Control Subsystem (ADCS) is responsible for
+stabilizing a spacecraft and orienting it in the desired direction throughout
+its mission. This capability is essential—not optional—for the successful
+functioning of most spacecraft. In this post, we focus exclusively on why ADCS
+is needed, deferring the topics of sensing, attitude determination, and control
+to future posts.
 
-# Introduction
+## The Challenge of Space: Disturbance Torques
+A spacecraft in orbit is constantly subjected to small but persistent
+disturbance torques. These torques originate from environmental sources and fall
+into two categories:
 
-The ADCS subsystem is responsible for controlling a satellite’s orientation.
+1. **Cyclic Torques:** Vary in a periodic (often sinusoidal) manner during an orbit.
+2. **Secular Torques:** Accumulate over time and do not average out, causing gradual drift.
 
-We build on the orbital reference frames defined in [Geocentric Coordinate Systems](GEC.qmd).
+If left unopposed, these torques will reorient the spacecraft, disrupting its
+mission. ADCS has to counter these torques through:
 
-## Euler Angles
+1. **Passive Methods:** Use the spacecraft's inherent inertia or magnetic properties
+to make disturbances stabilizing or tolerable.
 
-Attitude can be described using Euler angles $(\phi, \theta, \psi)$.
+2. **Active Methods:** Sense attitude changes and apply corrective torques via
+thrusters or actuators.
 
-The transformation matrix is:
+## Beyond Stability: Repointing and Maneuvering
+ADCS is also needed to reorient the spacecraft deliberately. For instance:
 
-$$
-R = 
-\begin{bmatrix}
-c_\psi c_\theta & c_\psi s_\theta s_\phi - s_\psi c_\phi & c_\psi s_\theta c_\phi + s_\psi s_\phi \\
-s_\psi c_\theta & s_\psi s_\theta s_\phi + c_\psi c_\phi & s_\psi s_\theta c_\phi - c_\psi s_\phi \\
--s_\theta & c_\theta s_\phi & c_\theta c_\phi
-\end{bmatrix}
-$$ {#eq-rotation-matrix}
+- Repointing payloads, and antennas to new targets.
+- Correcting orientation after thruster firings, especially during orbit changes.
 
-where $c$ and $s$ denote cosine and sine functions respectively.
+These tasks often demand more from ADCS than disturbance rejection alone and can
+dictate its design.
 
-Refer to Equation @eq-rotation-matrix for attitude rotation.
+## Mission Modes That Rely on ADCS
+ADCS functionality evolves across different mission phases. Common ADCS modes
+include:
 
-Refer to @eq-orbital-period for orbital period.
+1. **Orbit Insertion and Acquisition** When a satellite separates from the
+launch vehicle, it begins to tumble due to the release mechanism’s imparted
+momentum. ADCS must:
+
+- Sense the tumbling rate.
+- Perform **detumbling** to stabilize the satellite.
+- Reorient the satellite to maximize solar power generation, which requires:
+    - Knowing the Sun’s direction.
+    - Determining current attitude.
+    - Rotating the satellite or adjusting the solar panels.
+
+For high-altitude orbits, satellites may be inserted into transfer orbits and
+maneuvered later. Thruster firings during this process can disturb attitude and
+must be corrected by ADCS.
+
+2. **Normal (On-Station) Mode**
+
+In this primary operational phase, the satellite carries out its mission. ADCS must:
+
+- Maintain correct orientation.
+- Continuously reject cyclic and secular disturbance torques.
+
+ADCS design is often driven by the requirements of this mode, since the
+satellite spends most of its life here.
+
+3. **Slew Mode**
+
+"Slew" refers to rotating the spacecraft. Slewing is required when:
+
+- The satellite needs to change its pointing direction.
+- Targets move, especially in the case of fast-moving objects like missiles.
+
+Some missions have moderate slew requirements (e.g., Earth observation), while
+others demand rapid, agile slews.
+
+4. **Safe Mode (Contingency)**
+
+Activated during emergencies, this mode prioritizes:
+
+- Preserving power.
+- Maintaining thermal safety.
+- Sacrificing mission performance if necessary.
+
+5. **Special Mode**
+
+Used during **known, temporary** conditions such as eclipses. For example:
+
+- During an eclipse, Sun sensors don’t work.
+- ADCS must switch to alternate attitude sensing methods.
+- Pre-planned handling avoids unnecessary transition to Safe Mode.
+
+## Common Sources of Disturbance Torques
+- **Gravity-gradient torque**
+    - Constant for Earth-pointing satellites
+    - Depends on spacecraft inertia and orbit altitude
+
+- **Solar radiation pressure torque**
+    - Cyclic for Earth-oriented spacecraft
+    - Influenced by geometry of the spacecraft, surface reflectivity, and centre
+    of gravity (CG)
+
+- **Magnetic torque**
+    - Cyclic in nature
+    - Depends on the residual dipole moment of the satellite, orbit altitude, and inclination
+
+- **Aerodynamic torque**
+    - Present in lower orbits
+    - Affected by atmospheric drag, spacecraft shape, and CG location
+
+## Conclusion
+Attitude control is fundamental to almost every aspect of spacecraft
+operations—from staying stable in space to pointing antennas and sensors at
+precise targets. Whether resisting subtle environmental disturbances or carrying
+out rapid, mission-critical slews, the ADCS ensures the spacecraft does what it
+was built to do.
