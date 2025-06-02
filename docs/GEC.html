@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Geocentric Coordinate Systems – An Introduction to Space Systems</title>
+<title>2&nbsp; Geocentric equatorial frame – An Introduction to Space Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,7 +111,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./GEC.html">Orbital Mechanics</a></li><li class="breadcrumb-item"><a href="./GEC.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Geocentric Coordinate Systems</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./GEC.html">Orbital Mechanics</a></li><li class="breadcrumb-item"><a href="./GEC.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Geocentric equatorial frame</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -128,7 +128,7 @@ window.Quarto = {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">An Introduction to Space Systems</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/mputty/space-book" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/puttym/space-book" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -175,7 +175,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./GEC.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Geocentric Coordinate Systems</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Geocentric equatorial frame</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -209,13 +209,11 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">3</span> Overview</a>
-  <ul class="collapse">
-  <li><a href="#coordinate-frames" id="toc-coordinate-frames" class="nav-link" data-scroll-target="#coordinate-frames"><span class="header-section-number">3.1</span> Coordinate Frames</a></li>
-  <li><a href="#example-equation" id="toc-example-equation" class="nav-link" data-scroll-target="#example-equation"><span class="header-section-number">3.2</span> Example Equation</a></li>
-  </ul></li>
+  <li><a href="#converting-from-cartesian-coordinates-to-ra-and-dec" id="toc-converting-from-cartesian-coordinates-to-ra-and-dec" class="nav-link active" data-scroll-target="#converting-from-cartesian-coordinates-to-ra-and-dec"><span class="header-section-number">2.1</span> Converting from Cartesian Coordinates to RA and Dec</a></li>
+  <li><a href="#python-code" id="toc-python-code" class="nav-link" data-scroll-target="#python-code"><span class="header-section-number">2.2</span> Python code</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">2.3</span> Conclusion</a></li>
   </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/mputty/space-book/edit/main/GEC.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/puttym/space-book/edit/main/GEC.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -224,9 +222,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./GEC.html">Orbital Mechanics</a></li><li class="breadcrumb-item"><a href="./GEC.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Geocentric Coordinate Systems</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./GEC.html">Orbital Mechanics</a></li><li class="breadcrumb-item"><a href="./GEC.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Geocentric equatorial frame</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Geocentric Coordinate Systems</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Geocentric equatorial frame</span></h1>
 </div>
 
 
@@ -243,27 +241,147 @@ window.Quarto = {
 </header>
 
 
-<section id="overview" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Overview</h1>
-<p>Geocentric coordinate systems are centered at the Earth’s center. This chapter introduces the geocentric equatorial frame and related systems.</p>
-<p>See also the orbital elements in Section <span class="quarto-unresolved-ref">?sec-orb-elements</span>.</p>
-<section id="coordinate-frames" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="coordinate-frames"><span class="header-section-number">3.1</span> Coordinate Frames</h2>
-<p>We define a right-handed coordinate system with:</p>
-<ul>
-<li>X-axis pointing toward the vernal equinox</li>
-<li>Z-axis along the Earth’s rotation axis</li>
-</ul>
+<p>The Geocentric Equatorial Frame (GEF) is an Earth-centered, inertial coordinate system widely used in orbital mechanics. Its origin is at the Earth’s center, the Z-axis points toward the North Pole (aligned with Earth’s rotation axis), and the X-axis points toward the vernal equinox — a fixed direction in space where Earth’s equatorial plane intersects its orbital plane.</p>
+<p>Earth’s orbit lies in one plane, and its rotation occurs around a tilted axis. As a result, the equatorial and orbital planes are not the same. They intersect along a line, and the Sun appears to cross this line twice a year, marking the vernal equinox (around March 21) and the autumnal equinox (around September 23). The vernal equinox is historically significant and relatively stable, making it an ideal reference direction.</p>
+<p>In this frame, the position of an object in the sky is often expressed using two angular coordinates:</p>
+<p><strong>Right Ascension (RA)</strong>, denoted by <span class="math inline">\(\alpha\)</span>, is the angle measured eastward *from the vernal equinox along the equatorial plane — analogous to longitude.</p>
+<p><strong>Declination (Dec)</strong>, denoted by <span class="math inline">\(\delta\)</span>, is the angle between the object’s *position vector and the equatorial plane — analogous to latitude.</p>
+<p>These angular coordinates give a more intuitive sense of location on the celestial sphere. They are especially useful for visualization, telescope alignment, and interpreting outputs from star trackers or tracking systems.</p>
+<section id="converting-from-cartesian-coordinates-to-ra-and-dec" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="converting-from-cartesian-coordinates-to-ra-and-dec"><span class="header-section-number">2.1</span> Converting from Cartesian Coordinates to RA and Dec</h2>
+<p>Satellite operators calculate the position vector of a satellite via what are called the ‘ranging measurements’. The position vector tells us how far the satellite is and in what direction, but angular quantities like RA and Dec provide a more intuitive picture of where the satellite is located on the celestial sphere, and are often used in conjunction with visual tracking or sky maps. Let’s now look at how to convert <span class="math inline">\((x, y, z)\)</span> coordinates into RA and Dec.</p>
+<div id="fig-coordinate-systems" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-coordinate-systems-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="assets/a2.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-coordinate-systems-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Right ascension and declination of the point <span class="math inline">\(P(x, y, z)\)</span>
+</figcaption>
+</figure>
+</div>
+<p>Suppose a satellite’s position is given in Cartesian form, <span class="math inline">\(\vec{\rho} = (x, y,
+z)\)</span>, expressed in the GEF (<a href="#fig-coordinate-systems" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>). To compute its RA and Dec, we begin by constructing the unit vector in the direction of the position vector:</p>
+<p><span class="math display">\[\begin{equation} \hat{\mathbf{u}}_{\rho} = \frac{\vec{\rho}}{||\vec{\rho}||} = l
+\hat{\mathbf{I}}+m \hat{\mathbf{J}}+n \hat{\mathbf{K}} \end{equation}\]</span></p>
+<p>where <span class="math inline">\(l\)</span>, <span class="math inline">\(m\)</span>, and <span class="math inline">\(n\)</span> are the direction cosines and <span class="math inline">\(\hat{\mathbf{I}}\)</span>, <span class="math inline">\(\hat{\mathbf{J}}\)</span>, and <span class="math inline">\(\hat{\mathbf{K}}\)</span> are the unit vectors in <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, and <span class="math inline">\(Z\)</span> directions respectively.</p>
+<p>From the figure, we can write, <span id="eq-dir-cos"><span class="math display">\[
+\begin{align}
+l &amp;= \frac{x}{\rho} = \frac{r \cos \alpha}{\rho}  = \frac{\rho \cos \delta \cos \alpha}{\rho} = \cos \delta \cos \alpha\nonumber \\
+m &amp;= \frac{y}{\rho} = \frac{r \sin \alpha}{\rho} = \frac{\rho \cos \delta \sin \alpha}{\rho} = \cos \delta \sin \alpha \\
+n &amp;= \frac{z}{\rho} = \sin \delta \nonumber
+\end{align}
+\tag{2.1}\]</span></span></p>
+<section id="find-delta" class="level3">
+<h3 class="anchored" data-anchor-id="find-delta">Find <span class="math inline">\(\delta\)</span></h3>
+<p>Declination <span class="math inline">\(\delta\)</span> varies between <span class="math inline">\(-90^\circ\)</span> and <span class="math inline">\(+90^\circ\)</span>. Since <span class="math inline">\(\sin \delta\)</span> has a unique value unique value for <span class="math inline">\(\delta\)</span> in this range, there is no quadrant ambibuity. Therefore,</p>
+<p><span id="eq-dec"><span class="math display">\[
+\begin{equation}
+\boxed{\delta = \arcsin \left(\frac{z}{\rho} \right)}
+\end{equation}
+\tag{2.2}\]</span></span></p>
 </section>
-<section id="example-equation" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="example-equation"><span class="header-section-number">3.2</span> Example Equation</h2>
-<p>The position vector <span class="math inline">\(\vec{r}\)</span> can be expressed as:</p>
-<p><span id="eq-position-vector"><span class="math display">\[
-\vec{r} = x \hat{i} + y \hat{j} + z \hat{k}
-\tag{3.1}\]</span></span></p>
+<section id="find-alpha" class="level3">
+<h3 class="anchored" data-anchor-id="find-alpha">Find <span class="math inline">\(\alpha\)</span></h3>
+<p>Consider,</p>
+<p><span id="eq-l"><span class="math display">\[
+\begin{equation}
+l = \cos \delta \cos \alpha
+\end{equation}
+\tag{2.3}\]</span></span></p>
+<p>Substituting for <span class="math inline">\(\delta\)</span> from <a href="#eq-dec" class="quarto-xref">Equation&nbsp;<span>2.2</span></a> in <a href="#eq-l" class="quarto-xref">Equation&nbsp;<span>2.3</span></a>, and rearranging terms, we get,</p>
+<p><span class="math display">\[
+\begin{equation}
+\alpha = \arccos \left(\frac{l}{\cos \delta}\right)
+\end{equation}
+\]</span></p>
+<p>Since <span class="math inline">\(\alpha\)</span> varies between <span class="math inline">\(0^\circ\)</span> and <span class="math inline">\(360^\circ\)</span>, the above equation can have two solutions. To identify the correct value of <span class="math inline">\(\alpha\)</span>, we use the expression for <span class="math inline">\(m\)</span> from <a href="#eq-dir-cos" class="quarto-xref">Equation&nbsp;<span>2.1</span></a>:</p>
+<p><span id="eq-m"><span class="math display">\[
+\begin{equation}
+    m = \cos \delta \sin \alpha
+\end{equation}
+\tag{2.4}\]</span></span></p>
+<p>In <a href="#eq-m" class="quarto-xref">Equation&nbsp;<span>2.4</span></a>, <span class="math inline">\(\delta\)</span> varies between <span class="math inline">\(-90^\circ\)</span> and <span class="math inline">\(+90^\circ\)</span>, and hence <span class="math inline">\(\cos \delta\)</span> is always positive. That means, if <span class="math inline">\(m\)</span> is positive, then <span class="math inline">\(\sin \alpha\)</span> should be positive, and consequently, <span class="math inline">\(\alpha\)</span> must lie in the I or II quadrant, ie <span class="math inline">\(0^\circ \leq \alpha \leq 180^\circ\)</span>.</p>
+<p>If <span class="math inline">\(m\)</span> is negative, then <span class="math inline">\(\sin \alpha\)</span> should be negative and therefore <span class="math inline">\(\alpha\)</span> must be in quadrant III or IV, ie <span class="math inline">\(0^\circ \leq \alpha \leq 360^\circ\)</span>.</p>
+<p>If <span class="math inline">\(m =0\)</span>, then <span class="math inline">\(\vec{\rho}\)</span> lies in the plane perpendicular to the <span class="math inline">\(y-\)</span> axis. In this case, <span class="math inline">\(\alpha = 0^\circ\)</span>, <span class="math inline">\(180^\circ\)</span>, or <span class="math inline">\(360^\circ\)</span>, depending on the value of <span class="math inline">\(\delta\)</span>. Specifically, <span class="math inline">\(\alpha = 0^\circ\)</span>, if <span class="math inline">\(\vec{\rho}\)</span> lies in the planes defined by <span class="math inline">\(+X\)</span> and <span class="math inline">\(\pm Z\)</span> axes, and <span class="math inline">\(180^{\circ}\)</span> if it lies in the planes defined by <span class="math inline">\(-X\)</span> and <span class="math inline">\(\pm Z\)</span> axes. We ignore <span class="math inline">\(\alpha = 360^{\circ}\)</span> as it is the same as <span class="math inline">\(\alpha = 0^{\circ}\)</span>. Note that <span class="math inline">\(l &gt; 0\)</span> in planes defined by the <span class="math inline">\(+X\)</span> and <span class="math inline">\(\pm Z\)</span> axes, and <span class="math inline">\(l &lt; 0\)</span>, in planes defined by the <span class="math inline">\(-X\)</span> and <span class="math inline">\(\pm Z\)</span> axes. With this, we can write,</p>
+<p><span id="eq-RA"><span class="math display">\[
+\begin{equation}
+    \boxed{\alpha=\left\{\begin{array}{ll}
+\cos ^{-1}\left(\frac{l}{\cos \delta}\right) &amp; (m&gt;0) \\
+360^{\circ}-\cos ^{-1}\left(\frac{l}{\cos \delta}\right) &amp; (m &lt; 0) \\
+0^{\circ} &amp; (m = 0\, \text{and}\, l &gt; 0) \\
+180^{\circ} &amp; (m = 0\, \text{and}\, l &lt; 0)
+\end{array}\right.}
+\end{equation}
+\tag{2.5}\]</span></span></p>
+<p>If we know the <span class="math inline">\((x, y, z)\)</span> coordinates of a satellite, then we can use <a href="#eq-dec" class="quarto-xref">Equation&nbsp;<span>2.2</span></a> and <a href="#eq-RA" class="quarto-xref">Equation&nbsp;<span>2.5</span></a> to obtain the corresponding declination and right ascension in the geocentric equatorial frame. These angular coordinates provide a more intuitive way of locating the satellite in space.</p>
+</section>
+</section>
+<section id="python-code" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="python-code"><span class="header-section-number">2.2</span> Python code</h2>
+<p>Given below is a Python program that computes RA and Dec from the cartesian coodinates of the position of a satellite. Note that the program takes command line arguments ie you need to provide the value of <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, and <span class="math inline">\(z\)</span> coordinates at the command line itself.</p>
+<p>For example, if the program is saved in file <code>cart_to_gef.py</code> and the position of the satellite is given by <span class="math inline">\(-5368 \mathbf{\hat{I}} - 1784 \mathbf{\hat{J}} + 3691 \mathbf{\hat{K}} \, (\mathrm{km})\)</span> then, you run the program by executing the following command in the terminal:</p>
+<p><code>python cart_to_gef.py -5368 -1784 3691</code></p>
+<p>Note that the numbers after the file name are the <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span> coordinates of the position vector of the satellite.</p>
+<pre><code>import numpy as np
+
+def direction_cosines(x, y, z):
+    r = np.array([x, y, z])
+    r_mag = np.linalg.norm(r)
+    l = x/r_mag
+    m = y/r_mag
+    n = z/r_mag
+    return l, m, n
+
+#Declination (in degree)
+def declination(n):
+    Dec = np.degrees(np.arcsin(n))
+    return Dec
+
+#Right ascension (in degree)
+def right_ascension(l, m, Dec):
+    if m &gt; 0:
+        RA = np.degrees(np.arccos(l/np.cos(np.radians(Dec))))
+    if m &lt; 0:
+        RA = 360 - np.degrees(np.arccos(l/np.cos(np.radians(Dec))))
+    if m == 0:
+        if l &gt; 0:
+            RA = 0
+        if l &lt; 0:
+            RA = 180
+    return RA    
+    
+def main():
+    #Get inputs from the command line
+    from argparse import ArgumentParser
+    a = ArgumentParser()
+    a.add_argument("x", type=float)
+    a.add_argument("y", type=float)
+    a.add_argument("z", type=float)
+    arguments = a.parse_args()
+    
+    #Calculate Dec and RA
+    r = np.array([arguments.x, arguments.y, arguments.z])
+    l, m, n = direction_cosines(x=r[0], y=r[1], z=r[2])
+    Dec = declination(n)
+    RA = right_ascension(l, m, Dec)
+    
+    #Print output
+    print("===============================")
+    print("Position coordinates (given): x = {0} km, y = {1} km, z = {2} km".format(r[0], r[1], r[2]))
+    print("Direction cosines: l = {0:.4}, m = {1:.4}, n = {2:.4}".format(l, m, n))
+    print("Dec = {0:5.2f} deg".format(Dec))
+    print("RA = {0:5.2f} deg".format(RA))
+    print("================================")
+    
+if __name__ == "__main__":
+    main()</code></pre>
+</section>
+<section id="conclusion" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">2.3</span> Conclusion</h2>
+<p>Understanding the transformation from Cartesian coordinates to right ascension and declination is a foundational step in satellite tracking and space mission analysis. It bridges the mathematical representation of position with how we actually observe objects in the sky. Whether you’re working with raw simulation data or planning real-world observations, this conversion is key to aligning engineering models with celestial geometry. As you delve deeper into orbital mechanics, you’ll see RA and Dec crop up in everything from star tracker outputs to ground station pointing algorithms. Mastering this transformation builds both clarity and confidence in your space systems work.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -683,4 +801,4 @@ window.Quarto = {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mputty/space-book/edit/main/GEC.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/puttym/space-book/edit/main/GEC.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
