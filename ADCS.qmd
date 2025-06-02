@@ -1,5 +1,5 @@
 ---
-title: "Why Spacecraft Need Attitude Determination and Control Subsystem (ADCS)"
+title: "Attitude Determination and Control Subsystem (ADCS)"
 ---
 # Introduction {.unnumbered}
 The Attitude Determination and Control Subsystem (ADCS) is responsible for
